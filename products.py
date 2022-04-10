@@ -12,4 +12,9 @@ while True:
  	products.append(p) # 這裡可以把p直接寫進來變成->products.append([name,price])
 print(products)
 
+# 用for loop搞清楚每個東西是什麼
+
+for product in products:
+	print(product[0], '的價格是', product[1])
+
 
