@@ -22,12 +22,12 @@ for product in products:
 
 sum_ANAN = 0
 sum_Peggy = 0
-for A in products:
-	A[1] = int(A[1])
-	if A[2] == '安安':
-		sum_ANAN = sum_ANAN + A[1]
-	elif A[2] == '阿藍':
-		sum_Peggy = sum_Peggy + A[1]
+for product in products:
+	product[1] = int(product[1])
+	if product[2] == '安安':
+		sum_ANAN = sum_ANAN + product[1]
+	elif product[2] == '阿藍':
+		sum_Peggy = sum_Peggy + product[1]
 print('安安_總共先付了: ', sum_ANAN, '元')
 print('阿藍_總共先付了: ', sum_Peggy, '元')
 
@@ -38,4 +38,25 @@ elif sum_ANAN - sum_Peggy == 0:
 else:
 	print('安安要給阿藍: ',sum_Peggy-sum_ANAN, '元')
 
-	
+# 字串可以做+跟*
+# 'abc' + '123' = 'abc123'
+# 'abc' * 3 = 'abcabcabc'
+# 寫入功能的練習
+# 可以是txt檔案, 也可以是csv檔案
+
+with open('products.txt', 'w') as f:
+	for pp in products:
+		pp[1] = str(pp[1])
+		f.write(pp[0] + ',' + pp[1] + ',' + pp[2] + '\n')
+
+with open('products.csv', 'w') as f:
+	for pp in products:
+		f.write(pp[0] + ',' + str(pp[1]) + ',' + pp[2] + '\n')
+	f.write('安安總共先付了: ' + ',' + str(sum_ANAN) + ',' + '元' + '\n') 
+	f.write('阿藍總共先付了: ' + ',' + str(sum_Peggy) + ',' + '元' + '\n') 
+	if sum_ANAN - sum_Peggy > 0:
+		f.write('阿藍要給安安: ' + ',' + str(sum_ANAN-sum_Peggy) + ',' + '元' + '\n') 
+	elif sum_ANAN - sum_Peggy == 0:
+		f.write('真巧,剛好一人付一半!哈哈!' + '\n')
+	else:
+		f.write('阿藍要給安安: ' + ',' + str(sum_Peggy-sum_ANAN) + ',' + '元' + '\n')
