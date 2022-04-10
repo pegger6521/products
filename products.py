@@ -50,13 +50,15 @@ with open('products.txt', 'w') as f:
 		f.write(pp[0] + ',' + pp[1] + ',' + pp[2] + '\n')
 
 with open('products.csv', 'w') as f:
+	f.write('項目,價格,付款人\n')
 	for pp in products:
 		f.write(pp[0] + ',' + str(pp[1]) + ',' + pp[2] + '\n')
-	f.write('安安總共先付了: ' + ',' + str(sum_ANAN) + ',' + '元' + '\n') 
-	f.write('阿藍總共先付了: ' + ',' + str(sum_Peggy) + ',' + '元' + '\n') 
+	f.write('\n結算\n安安總共先付了: ,' + str(sum_ANAN) + ',元\n') 
+	f.write('阿藍總共先付了: ,' + str(sum_Peggy) + ',元\n') 
+	f.write('平均每人花了: ,' + str((sum_ANAN + sum_Peggy)/2) + ',元\n') 
 	if sum_ANAN - sum_Peggy > 0:
-		f.write('阿藍要給安安: ' + ',' + str(sum_ANAN-sum_Peggy) + ',' + '元' + '\n') 
+		f.write('阿藍要給安安: ,' + str(sum_ANAN-sum_Peggy) + ',元\n') 
 	elif sum_ANAN - sum_Peggy == 0:
-		f.write('真巧,剛好一人付一半!哈哈!' + '\n')
+		f.write('真巧,剛好一人付一半!哈哈!\n')
 	else:
-		f.write('阿藍要給安安: ' + ',' + str(sum_Peggy-sum_ANAN) + ',' + '元' + '\n')
+		f.write('安安要給阿藍: ,' + str(sum_Peggy-sum_ANAN) + ',元\n')
